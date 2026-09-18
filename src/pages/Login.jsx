@@ -156,7 +156,7 @@ const Login = () => {
                   >
                     <div className="font-medium text-purple-700">Employer</div>
                     <div className="text-gray-500">
-                      sanjana@gmail.com / EazyBytes@1803
+                      sanjana@gmail.com / Jinesh@2002
                     </div>
                   </button>
                   <button
@@ -170,7 +170,7 @@ const Login = () => {
                   >
                     <div className="font-medium text-blue-700">Job Seeker</div>
                     <div className="text-gray-500">
-                      john@gmail.com / EazyBytes@1803
+                      john@gmail.com / Jinesh@2002
                     </div>
                   </button>
                   <button
@@ -184,7 +184,7 @@ const Login = () => {
                   >
                     <div className="font-medium text-blue-700">Admin</div>
                     <div className="text-gray-500">
-                      admin@gmail.com / EazyBytes@1803
+                      admin@gmail.com / Jinesh@2002
                     </div>
                   </button>
                 </div>
