@@ -168,7 +168,7 @@ export const AuthProvider = ({ children }) => {
       console.log('[Auth] Login response:', response.data);
 
       if (response.data && response.data.jwtToken) {
-        const { jwtToken, user: userData, message } = response.data;
+        const { jwtToken, user: userData } = response.data;
 
         // Store JWT token in localStorage
         localStorage.setItem('authToken', jwtToken);
@@ -376,7 +376,7 @@ export const AuthProvider = ({ children }) => {
       setUser(updatedUser);
       setIsLoading(false);
       return { success: true, user: updatedUser };
-    } catch (error) {
+    } catch {
       setIsLoading(false);
       return { success: false, error: 'Failed to update profile' };
     }

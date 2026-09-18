@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useJobs } from '../context/JobContext';
 import { useAuth } from '../context/AuthContext';
 import { useJobsData } from '../contexts/JobsDataContext';
 import * as jobApplicationService from '../services/jobApplicationService';
+
+const APPLICATION_STATUSES = [
+  { value: 'PENDING', label: 'Applied' },
+  { value: 'IN_REVIEW', label: 'In Review' },
+  { value: 'INTERVIEW', label: 'Interview' },
+  { value: 'HIRED', label: 'Hired' },
+  { value: 'REJECTED', label: 'Rejected' },
+];
 
 const JobApplicants = () => {
   const { jobId } = useParams();
@@ -199,20 +206,23 @@ const JobApplicants = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Applied':
+      case 'PENDING':
         return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'In Review':
+      case 'IN_REVIEW':
         return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'Interview':
+      case 'INTERVIEW':
         return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'Rejected':
+      case 'REJECTED':
         return 'bg-red-100 text-red-800 border-red-200';
-      case 'Hired':
+      case 'HIRED':
         return 'bg-green-100 text-green-800 border-green-200';
       default:
         return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
+
+  const getStatusLabel = (status) =>
+    APPLICATION_STATUSES.find((s) => s.value === status)?.label || status;
 
   const filteredApplications = applications.filter(app => {
     if (filter === 'all') return true;
@@ -424,7 +434,7 @@ const JobApplicants = () => {
 
                     <div className="flex items-center space-x-3 mb-4">
                       <span className={`px-3 py-1 rounded-full text-sm font-medium border ${getStatusColor(application.applicant.status)}`}>
-                        {application.applicant.status}
+                        {getStatusLabel(application.applicant.status)}
                       </span>
                     </div>
                   </div>
@@ -439,11 +449,9 @@ const JobApplicants = () => {
                         onChange={(e) => handleStatusChange(application.applicationId, e.target.value)}
                         className="px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 outline-none"
                       >
-                        <option value="Applied">Applied</option>
-                        <option value="In Review">In Review</option>
-                        <option value="Interview">Interview</option>
-                        <option value="Hired">Hired</option>
-                        <option value="Rejected">Rejected</option>
+                        {APPLICATION_STATUSES.map((s) => (
+                          <option key={s.value} value={s.value}>{s.label}</option>
+                        ))}
                       </select>
                     </div>
 

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import { useTheme } from "../../context/ThemeContext";
 import httpClient from "../../config/httpClient";
 import { API_ENDPOINTS } from "../../config/api";
 
 const ContactMessages = () => {
-  const { theme } = useTheme();
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedMessageId, setExpandedMessageId] = useState(null);

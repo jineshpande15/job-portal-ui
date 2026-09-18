@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useTheme } from '../../context/ThemeContext';
+import { useState } from 'react';
 import { useCompanies } from '../../contexts/CompaniesContext';
 import httpClient from '../../config/httpClient';
 import { API_ENDPOINTS } from '../../config/api';
 
 const CompanyManagement = () => {
-  const { theme } = useTheme();
   const { companies: contextCompanies, loading: contextLoading, refetch } = useCompanies();
   const [editingCompanyId, setEditingCompanyId] = useState(null);
   const [formData, setFormData] = useState({

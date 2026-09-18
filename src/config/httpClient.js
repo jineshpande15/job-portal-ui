@@ -145,7 +145,7 @@ httpClient.interceptors.response.use(
 
       // Handle specific status codes
       switch (error.response.status) {
-        case 401:
+        case 401: {
           // Only redirect to login if this is NOT a login request
           // and we're NOT already on the login page
           const isLoginRequest = error.config.url.includes("/auth/login");
@@ -163,6 +163,7 @@ httpClient.interceptors.response.use(
             localStorage.removeItem("jobPortalUser");
           }
           break;
+        }
         case 403:
           console.error("Access forbidden");
           break;

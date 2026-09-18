@@ -124,7 +124,7 @@ export const fetchOpenContactMsgsWithPaginationAndSort = async (
  * @param {number} id - Contact ID
  * @returns {Promise<Object>} Contact record
  */
-export const fetchContactById = async (id) => {
+export const fetchContactById = async () => {
   try {
     // No GET /contacts/{id} exists on the backend.
     throw new Error(
@@ -164,7 +164,7 @@ export const updateContactStatus = async (id, status) => {
  * @param {number} id - Contact ID
  * @returns {Promise<void>}
  */
-export const deleteContact = async (id) => {
+export const deleteContact = async () => {
   try {
     // No DELETE /contacts/{id} exists on the backend.
     throw new Error(

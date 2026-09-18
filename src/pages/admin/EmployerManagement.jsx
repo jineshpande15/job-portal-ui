@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useTheme } from '../../context/ThemeContext';
+import { useState } from 'react';
 import { useCompanies } from '../../contexts/CompaniesContext';
 import httpClient from '../../config/httpClient';
 import { API_ENDPOINTS } from '../../config/api';
 
 const EmployerManagement = () => {
-  const { theme } = useTheme();
   const { companies: contextCompanies, loading: companiesLoading } = useCompanies();
   const [selectedCompanyId, setSelectedCompanyId] = useState('');
   const [error, setError] = useState('');
